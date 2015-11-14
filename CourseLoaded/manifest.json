@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+
+  "name": "CourseLoaded",
+  "short_name": "CourseLoaded",
+  "description": "A single extension to prepare Chrome for the classroom",
+  "version": "0.0.1",
+  "options_page": "html/options.html",
+  "permissions": [
+        "storage",
+        "background"
+  ],
+  "background": {
+    "scripts": ["js/bootstrap.js"]
+  },
+  "icons": {
+    "32": "images/logo-32.png",
+    "64": "images/logo-64.png",
+    "128": "images/logo-128.png"
+  }
+
+}
