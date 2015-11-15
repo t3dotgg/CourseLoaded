@@ -4,7 +4,7 @@
   "name": "CourseLoaded",
   "short_name": "CourseLoaded",
   "description": "A single extension to prepare Chrome for the classroom",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "options_page": "html/options.html",
   "chrome_url_overrides": {
         "newtab": "html/options.html"
