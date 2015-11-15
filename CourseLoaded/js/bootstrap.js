@@ -145,7 +145,7 @@ function executeInTabIfBlocked(tab) {
   location = parseLocation(location[1]);
 
   if(block_toggle && isLocationBlocked(location)) {
-    chrome.tabs.update(tab.id, {url: chrome.extension.getURL('html/options.html')});
+    chrome.tabs.update(tab.id, {url: chrome.extension.getURL('html/blocked.html')});
   }
 }
 
