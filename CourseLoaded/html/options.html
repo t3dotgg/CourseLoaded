@@ -7,6 +7,7 @@
 	<title>New Tab</title>
 
 	<link rel="stylesheet" href="/style/custom.css" rel="stylesheet">
+	<link rel="stylesheet" href="/bootstrap/css/bootstrap.css" rel="stylesheet">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
@@ -14,26 +15,39 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
 
 	
+	
 </head>
 <body>
-    <div class="jumbotron">
+    <div class="jumbotron col-sm-12 col-md-12 col-lg-12">
       <div class="container">
-      <form class="form-inline">
-		<div class="form-group">
-			<span id="time"></span>
-			<div class="col-sm-1"></div>
-			<input type="search" name="search" id="inputSearch" class="form-control col-md-8 col-lg-8 col-sm-8" value="" placeholder="Search..." required="required" title="">
-      		</div>      	
-      </form>
-      		
-      		
+      <div class="row">
+      	<h3>
+	      	<span id="time"></span>
+	      	<input id="search-input" class="col-md-offset-3 col-md-6"></input>
+			<button id="nav-search" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search round" aria-hidden="true"></span> </button>
+		</h3>
+      </div>
+		
+
       </div>
     </div>
+    <div class="col-md-6 col-md-offset-3">
+    	<div class="panel panel-danger" id="ad-block-alert">
+	    	<div class="panel-heading">
+    			<h3 class="panel-title">It's Dangerous to Go Alone! Take This!</h3>
+	    	</div>
+	    	<div class="panel-body">
+	    			UBlock Bitches.
+	    	</div>
+    	</div>
+	</div>
+    
 
 
 <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/bootstrap/js/bootstrap.js"></script>
 <script src="/js/bootstrap.js"></script>
+<script src="/js/block.js"></script>
 
 </body>
 </html>

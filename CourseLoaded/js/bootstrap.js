@@ -1,32 +1,3 @@
-(function() {
-  'use strict';
-  /**
-  * Gets Current Time 
-  */
-  function displayCurrentTime() {
-    // Get the current time
-    var clock = new Date(),
-        h = clock.getHours(),
-        m = clock.getMinutes(),
-        s = clock.getSeconds();
-
-    // Make sure that hours, minutes are all 2 digits each
-    if(h.toString().length < 2) { h = '0' + h; }
-    if(m.toString().length < 2) { m = '0' + m; }
-
-    var time = h + ':' + m ;
-
-    // Update the current time
-    document.getElementById('time').innerHTML = time;
-  }
-
-  window.onload = function() {
-    // Update the clock every second
-    displayCurrentTime();
-    setInterval(displayCurrentTime, 1000);
-  };
-})();
-
 // Browser Action toggle button
 var ENABLED = false;
 chrome.browserAction.setIcon({path:"images/logo-off-38.png"});
@@ -74,7 +45,7 @@ var PREFS = defaultPrefs();
 chrome.browserAction.onClicked.addListener(updateState);
 
 function parseLocation(location) {
-  if(location == undefined){
+  if(location === undefined){
     return;
   }
   var components = location.split('/');
@@ -111,6 +82,7 @@ function domainsMatch(test, against) {
   if(test === against) {
     return true;
   } else {
+    console.log(test);
     var testFrom = test.length - against.length - 1;
 
     // Case 2: if the second string is longer than first, or they are the same
@@ -177,3 +149,40 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
       executeInTabIfBlocked('block', tab);
     }
 });
+
+
+// Function called if AdBlock is not detected
+function adBlockNotDetected() {
+    $('#ad-block-alert').show();
+}
+// Function called if AdBlock is detected
+function adBlockDetected() {
+    $('#ad-block-alert').show();
+}
+
+// Recommended audit because AdBlock lock the file 'fuckadblock.js' 
+// If the file is not called, the variable does not exist 'fuckAdBlock'
+// This means that AdBlock is present
+if(typeof fuckAdBlock === 'undefined') {
+    adBlockDetected();
+} else {
+    fuckAdBlock.onDetected(adBlockDetected);
+    fuckAdBlock.onNotDetected(adBlockNotDetected);
+    // and|or
+    fuckAdBlock.on(true, adBlockDetected);
+    fuckAdBlock.on(false, adBlockNotDetected);
+    // and|or
+    fuckAdBlock.on(true, adBlockDetected).onNotDetected(adBlockNotDetected);
+
+    // Change the options
+    fuckAdBlock.setOption('checkOnLoad', false);
+    // and|or
+    fuckAdBlock.setOption({
+        debug: true,
+        checkOnLoad: false,
+        resetOnEnd: false
+});
+    }
+
+
+

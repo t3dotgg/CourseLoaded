@@ -1,0 +1,46 @@
+{
+  "name": "fuck-adblock",
+  "version": "3.2.0",
+  "description": "Detects ad blockers (AdBlock, ...)",
+  "authors": [
+    {
+      "name": "Valentin Allaire",
+      "email": "valentin.allaire@sitexw.fr",
+      "homepage": "http://sitexw.fr/"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "adblock",
+    "advertising",
+    "ad",
+    "block",
+    "lock",
+    "detection",
+    "detecting"
+  ],
+  "main": "fuckadblock.js",
+  "ignore": [
+    "package.json",
+    "README.md",
+    "test.html"
+  ],
+  "homepage": "https://github.com/sitexw/FuckAdBlock",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sitexw/FuckAdBlock.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sitexw/FuckAdBlock/issues"
+  },
+  "_release": "3.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v3.2.0",
+    "commit": "215cb762e0ebdbafdac810bfc1ac88920786ac4a"
+  },
+  "_source": "git://github.com/sitexw/FuckAdBlock.git",
+  "_target": "~3.2.0",
+  "_originalSource": "fuck-adblock",
+  "_direct": true
+}

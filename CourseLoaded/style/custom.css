@@ -10,17 +10,32 @@ header{
     font-family: "Roboto", sans-serif;
 }
 
+#search-input {
+    border-radius: 6px;
+    padding: 3px;
+}
+
+
+#nav-search{
+    padding: 5px;
+    vertical-align: middle;
+    margin-left: .5em;
+
+}
+
 #time{
     border-style: solid;
     border-top-style: solid;
-    border-radius: 4px;
+    border-radius: 6px;
     padding: .3em;
     float: left;
 }
 
-#nav-search{
-    display: inline;
+#ad-block-alert {
+    display: none;
 }
+
+
 
 .clock{
     vertical-align: center;
