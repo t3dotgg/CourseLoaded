@@ -25,6 +25,9 @@ FEATURES
 		- No "recently visited pages" window
 		- Search bar that goes directly to Google Safe Search
 
+###v0.1.0
+	- Toggle switch added for turning blocking on and off
+	- Made blocking redirect to a page (options.html for now), way faster
 
 ###v0.0.2
 	- Basic website blocking implemented (huge shoutout to open source project Strict-Workflow)

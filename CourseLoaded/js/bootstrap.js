@@ -27,6 +27,20 @@
   };
 })();
 
+// Browser Action toggle button
+var ENABLED = false;
+chrome.browserAction.setIcon({path:"images/logo-off-38.png"});
+
+function updateState(){
+    if(ENABLED==false){
+        ENABLED=true;
+        chrome.browserAction.setIcon({path:"images/logo-38.png"});
+    }else{
+        ENABLED=false;
+        chrome.browserAction.setIcon({path:"images/logo-off-38.png"});
+    }
+}
+
   function defaultPrefs() {
   return {
     siteList: [
@@ -56,6 +70,8 @@
 }
 
 var PREFS = defaultPrefs();
+
+chrome.browserAction.onClicked.addListener(updateState);
 
 function parseLocation(location) {
   if(location == undefined){
@@ -135,7 +151,7 @@ function executeInTabIfBlocked(action, tab) {
   location = tab.url.split('://');
   location = parseLocation(location[1]);
 
-  if(isLocationBlocked(location)) {
+  if(ENABLED && isLocationBlocked(location)) {
     chrome.tabs.update(tab.id, {url: chrome.extension.getURL('html/options.html')});
   }
 }
@@ -152,8 +168,12 @@ function executeInAllBlockedTabs(action) {
   });
 }
 
-executeInAllBlockedTabs('block');
+if(ENABLED){
+  executeInAllBlockedTabs('block');
+}
 
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-    executeInTabIfBlocked('block', tab);
+    if(ENABLED){
+      executeInTabIfBlocked('block', tab);
+    }
 });
