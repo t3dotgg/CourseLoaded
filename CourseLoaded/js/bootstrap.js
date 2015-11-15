@@ -134,9 +134,9 @@ function executeInTabIfBlocked(action, tab) {
   var file = "js/" + action + ".js", location;
   location = tab.url.split('://');
   location = parseLocation(location[1]);
-  
+
   if(isLocationBlocked(location)) {
-    chrome.tabs.executeScript(tab.id, {file: file});
+    chrome.tabs.update(tab.id, {url: chrome.extension.getURL('html/options.html')});
   }
 }
 
@@ -153,17 +153,6 @@ function executeInAllBlockedTabs(action) {
 }
 
 executeInAllBlockedTabs('block');
-
-chrome.webRequest.onBeforeRequest.addListener(function(details) {
-    console.log("details:");
-    //alert(details.url);
-    location = details.url.split('://');
-    location = parseLocation(location[1]);
-    console.log(location);
-    if(location != undefined && isLocationBlocked(location)){
-      alert("This site is blocked! Oh no!");
-    }
-}, {urls: ["<all_urls>"]}, ["blocking"]);
 
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     executeInTabIfBlocked('block', tab);
