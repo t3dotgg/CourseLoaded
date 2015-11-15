@@ -26,5 +26,8 @@ FEATURES
 		- Search bar that goes directly to Google Safe Search
 
 
+###v0.0.2
+	- Basic website blocking implemented (huge shoutout to open source project Strict-Workflow)
+
 ###v0.0.1
 	- We have an icon!
