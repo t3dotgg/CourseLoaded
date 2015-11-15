@@ -23,8 +23,18 @@
       <div class="row">
       	<h3>
 	      	<span id="time"></span>
-	      	<input id="search-input" class="col-md-offset-3 col-md-6"></input>
-			<span class="glyphicon glyphicon-search round" id="search-button" aria-hidden="true"></span>
+				<center>
+					<FORM method=GET action="http://www.google.com/search">
+					<input type=hidden name=ie value=UTF-8>
+					<input type=hidden name=oe value=UTF-8>
+					
+					<TABLE><tr><td>
+					<INPUT TYPE=text name=q size=25 maxlength=255 value="">
+					<INPUT type=hidden name=safe value=strict>
+					<button type=submit name=sa><span class="glyphicon glyphicon-search round" id="search-button" aria-hidden="true"></span></button>
+					</td></tr></TABLE>
+					</FORM>
+				</center>
 		</h3>
       </div>
 		

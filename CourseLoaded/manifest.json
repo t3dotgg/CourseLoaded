@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
 
-  "name": "CourseLoaded",
+  "name": "CourseLoaded Beta",
   "short_name": "CourseLoaded",
   "description": "A single extension to prepare Chrome for the classroom",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "options_page": "html/options.html",
   "chrome_url_overrides": {
         "newtab": "html/options.html"

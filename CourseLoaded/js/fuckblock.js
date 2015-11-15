@@ -1,11 +1,11 @@
 // Function called if AdBlock is not detected
-function adBlockNotDetected() {
+function adBlockDetected() {
     console.log('not detected');
     $('#ad-block-alert').show();
     $('#thumb').hide();
 }
 // Function called if AdBlock is detected
-function adBlockDetected() {
+function adBlockNotDetected() {
     console.log('detected');
 
     $('#thumb').show();
