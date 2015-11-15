@@ -13,26 +13,25 @@ chrome.storage.local.get('block_toggle', function(result){
 
 if(block_toggle==false){
   chrome.browserAction.setIcon({path:"/images/logo-off-38.png"});
-}else{
+}
+
+if(block_toggle==true){
   chrome.browserAction.setIcon({path:"/images/logo-38.png"});
 }
 
 function updateState(){
     if(block_toggle==false){
-        alert("Enabled");
         chrome.browserAction.setIcon({path:"/images/logo-38.png"});
         executeInAllBlockedTabs();
     }
     if(block_toggle==true){
-        alert("Disabled");
         chrome.browserAction.setIcon({path:"/images/logo-off-38.png"});
     }
     if(block_toggle !== undefined){
       block_toggle = !block_toggle;
-      chrome.storage.local.set({'block_toggle': true});
+      chrome.storage.local.set({'block_toggle': block_toggle});
     }else{
       block_toggle = false;
-      alert("This code should not run");
     }
 }
 
