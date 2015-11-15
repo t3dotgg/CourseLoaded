@@ -1,6 +1,8 @@
 // Browser Action toggle button
-var blocker_enabled = new Boolean();
-blocker_enabled = false;
+if(localStorage["enabled_bool"] == undefined){
+  localStorage["enabled_bool"] = false;
+}
+var blocker_enabled = localStorage["enabled_bool"];
 chrome.browserAction.setIcon({path:"images/logo-off-38.png"});
 
 function updateState(){
@@ -162,7 +164,7 @@ function adBlockNotDetected() {
 }
 // Function called if AdBlock is detected
 function adBlockDetected() {
-    $('#ad-block-alert').show();
+    $('#ad-block-alert').hide();
 }
 
 // Recommended audit because AdBlock lock the file 'fuckadblock.js' 

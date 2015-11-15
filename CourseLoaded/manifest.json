@@ -18,7 +18,8 @@
         "<all_urls>"
   ],
   "background": {
-    "scripts": ["js/bootstrap.js"]
+    "scripts": ["js/bootstrap.js"],
+    "persistent": true
   },
   "icons": {
     "32": "images/logo-32.png",
