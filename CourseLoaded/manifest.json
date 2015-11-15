@@ -18,7 +18,7 @@
         "<all_urls>"
   ],
   "background": {
-    "scripts": ["js/bootstrap.js"],
+    "scripts": ["js/bootstrap.js", "js/jquery-2.0.3.min.js"],
     "persistent": true
   },
   "icons": {
@@ -31,6 +31,12 @@
       "38": "images/logo-off-38.png"
     }
   },
+  "content_scripts": [
+    {
+      "matches":["*://*.youtube.com/*"],
+      "js":["js/jquery-2.0.3.min.js", "js/youtubehide.js"]
+    }
+  ],
   "web_accessible_resources": [
       "images/logo-64.png",
       "images/logo-128.png",

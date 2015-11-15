@@ -172,6 +172,10 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     }
 });
 
+chrome.webRequest.onBeforeRequest.addListener(function(details) {
+  chrome.tabs.executeScript(chrome.tabs.useCurrent, {"file": "js/youtubehide.js"});
+}, {urls: ["*://*.youtube.com/*"]}, ["blocking"]);
+
 
 // Function called if AdBlock is not detected
 function adBlockNotDetected() {
