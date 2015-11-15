@@ -1,22 +1,38 @@
 // Browser Action toggle button
-if(localStorage["enabled_bool"] == undefined){
-  localStorage["enabled_bool"] = false;
+var block_toggle;
+
+chrome.storage.local.get('block_toggle', function(result){
+  if(result.block_toggle === undefined){
+    chrome.storage.local.set({'block_toggle': false});
+    result.block_toggle = false;
+    alert("Just set the default value to false");
+  }
+  block_toggle = result.block_toggle;
+});
+
+
+if(block_toggle==false){
+  chrome.browserAction.setIcon({path:"/images/logo-off-38.png"});
+}else{
+  chrome.browserAction.setIcon({path:"/images/logo-38.png"});
 }
-var blocker_enabled = localStorage["enabled_bool"];
-chrome.browserAction.setIcon({path:"images/logo-off-38.png"});
 
 function updateState(){
-    if(blocker_enabled==false){
+    if(block_toggle==false){
         alert("Enabled");
-        chrome.browserAction.setIcon({path:"images/logo-38.png"});
+        chrome.browserAction.setIcon({path:"/images/logo-38.png"});
         executeInAllBlockedTabs();
     }
-    if(blocker_enabled==true){
+    if(block_toggle==true){
         alert("Disabled");
-        chrome.browserAction.setIcon({path:"images/logo-off-38.png"});
+        chrome.browserAction.setIcon({path:"/images/logo-off-38.png"});
     }
-    if(blocker_enabled != undefined){
-      blocker_enabled = !blocker_enabled;
+    if(block_toggle !== undefined){
+      block_toggle = !block_toggle;
+      chrome.storage.local.set({'block_toggle': true});
+    }else{
+      block_toggle = false;
+      alert("This code should not run");
     }
 }
 
@@ -128,7 +144,7 @@ function executeInTabIfBlocked(tab) {
   var location = tab.url.split('://');
   location = parseLocation(location[1]);
 
-  if(blocker_enabled && isLocationBlocked(location)) {
+  if(block_toggle && isLocationBlocked(location)) {
     chrome.tabs.update(tab.id, {url: chrome.extension.getURL('html/options.html')});
   }
 }
@@ -145,14 +161,14 @@ function executeInAllBlockedTabs() {
   });
 }
 
-if(blocker_enabled){
+if(block_toggle === true){
   executeInAllBlockedTabs();
 }
 
 chrome.browserAction.onClicked.addListener(updateState);
 
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-    if(blocker_enabled){
+    if(block_toggle){
       executeInTabIfBlocked(tab);
     }
 });
