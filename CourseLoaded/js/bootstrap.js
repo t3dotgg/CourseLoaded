@@ -58,6 +58,9 @@
 var PREFS = defaultPrefs();
 
 function parseLocation(location) {
+  if(location == undefined){
+    return;
+  }
   var components = location.split('/');
   return {domain: components.shift(), path: components.join('/')};
 }
@@ -150,6 +153,17 @@ function executeInAllBlockedTabs(action) {
 }
 
 executeInAllBlockedTabs('block');
+
+chrome.webRequest.onBeforeRequest.addListener(function(details) {
+    console.log("details:");
+    //alert(details.url);
+    location = details.url.split('://');
+    location = parseLocation(location[1]);
+    console.log(location);
+    if(location != undefined && isLocationBlocked(location)){
+      alert("This site is blocked! Oh no!");
+    }
+}, {urls: ["<all_urls>"]}, ["blocking"]);
 
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     executeInTabIfBlocked('block', tab);

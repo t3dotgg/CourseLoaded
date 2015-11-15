@@ -10,6 +10,8 @@
         "newtab": "html/options.html"
   },
   "permissions": [
+        "webRequest",
+        "webRequestBlocking",
         "storage",
         "background",
         "tabs",
