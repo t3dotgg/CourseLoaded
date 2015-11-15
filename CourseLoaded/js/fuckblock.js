@@ -28,6 +28,7 @@ if(typeof fuckAdBlock === 'undefined') {
     fuckAdBlock.on(false, adBlockNotDetected);
     // and|or
     fuckAdBlock.on(true, adBlockDetected).onNotDetected(adBlockNotDetected);
+}
     // Change the options
     fuckAdBlock.setOption('checkOnLoad', false);
     // and|or
@@ -36,5 +37,5 @@ if(typeof fuckAdBlock === 'undefined') {
         checkOnLoad: false,
         resetOnEnd: false
 });
-}
+
     

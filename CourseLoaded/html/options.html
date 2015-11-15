@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>New Tab</title>
 
-	<link rel="stylesheet" href="/style/custom.css" rel="stylesheet">
 	<link rel="stylesheet" href="/bootstrap/css/bootstrap.css" rel="stylesheet">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
@@ -14,7 +13,8 @@
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
 
-	
+	<link rel="stylesheet" href="/style/custom.css" rel="stylesheet">
+
 	
 </head>
 <body>
@@ -31,7 +31,8 @@
 					<TABLE><tr><td>
 					<INPUT TYPE=text name=q size=25 maxlength=255 value="">
 					<INPUT type=hidden name=safe value=strict>
-					<button type=submit name=sa><span class="glyphicon glyphicon-search round" id="search-button" aria-hidden="true"></span></button>
+					<!-- <button type=submit name=sa></button> -->
+					<button type="button" name="sa" class="btn btn-default"><span class="glyphicon glyphicon-search round" id="search-button" aria-hidden="true"></span></button>
 					</td></tr></TABLE>
 					</FORM>
 				</center>
@@ -93,8 +94,8 @@
 
 
 <script src="../js/jquery-2.0.3.min.js"></script>
-<script src="../bootstrap/js/bootstrap.js"></script>
 <script src="../js/fuckadblock.js"></script>
+<script src="../bootstrap/js/bootstrap.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script src="../js/fuckblock.js"></script>
 <script src="../js/clock.js"></script>

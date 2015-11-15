@@ -30,8 +30,14 @@ header{
 
 #search-button
 {
-    padding-left:1em;
+    /*padding-left:1em;*/
     vertical-align: middle;
+}
+
+input {
+    height: 2em!important;
+    margin-top: 10px;
+
 }
 
 #nav-search{
