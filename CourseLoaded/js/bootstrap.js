@@ -1,14 +1,20 @@
 // Browser Action toggle button
-var ENABLED = false;
+var blocker_enabled = new Boolean();
+blocker_enabled = false;
 chrome.browserAction.setIcon({path:"images/logo-off-38.png"});
 
 function updateState(){
-    if(ENABLED==false){
-        ENABLED=true;
+    if(blocker_enabled==false){
+        alert("Enabled");
         chrome.browserAction.setIcon({path:"images/logo-38.png"});
-    }else{
-        ENABLED=false;
+        executeInAllBlockedTabs();
+    }
+    if(blocker_enabled==true){
+        alert("Disabled");
         chrome.browserAction.setIcon({path:"images/logo-off-38.png"});
+    }
+    if(blocker_enabled != undefined){
+      blocker_enabled = !blocker_enabled;
     }
 }
 
@@ -41,8 +47,6 @@ function updateState(){
 }
 
 var PREFS = defaultPrefs();
-
-chrome.browserAction.onClicked.addListener(updateState);
 
 function parseLocation(location) {
   if(location === undefined){
@@ -118,35 +122,36 @@ function isLocationBlocked(location) {
   return PREFS.whitelist;
 }
 
-function executeInTabIfBlocked(action, tab) {
-  var file = "js/" + action + ".js", location;
-  location = tab.url.split('://');
+function executeInTabIfBlocked(tab) {
+  var location = tab.url.split('://');
   location = parseLocation(location[1]);
 
-  if(ENABLED && isLocationBlocked(location)) {
+  if(blocker_enabled && isLocationBlocked(location)) {
     chrome.tabs.update(tab.id, {url: chrome.extension.getURL('html/options.html')});
   }
 }
 
-function executeInAllBlockedTabs(action) {
+function executeInAllBlockedTabs() {
   var windows = chrome.windows.getAll({populate: true}, function (windows) {
     var tabs, tab, domain, listedDomain;
     for(var i in windows) {
       tabs = windows[i].tabs;
       for(var j in tabs) {
-        executeInTabIfBlocked(action, tabs[j]);
+        executeInTabIfBlocked(tabs[j]);
       }
     }
   });
 }
 
-if(ENABLED){
-  executeInAllBlockedTabs('block');
+if(blocker_enabled){
+  executeInAllBlockedTabs();
 }
 
+chrome.browserAction.onClicked.addListener(updateState);
+
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-    if(ENABLED){
-      executeInTabIfBlocked('block', tab);
+    if(blocker_enabled){
+      executeInTabIfBlocked(tab);
     }
 });
 
