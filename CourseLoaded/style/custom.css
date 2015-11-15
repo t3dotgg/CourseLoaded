@@ -13,27 +13,16 @@ header{
     font-family: "Roboto", sans-serif;
 }
 
-.header-image{
-    background-color: #A2DFFF;
-    height: 200px;
-    z-index: 0;
-    background-size: cover;
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/92/São_Paulo_cityscape.jpg');
-    -webkit-filter: blur(15px);
-    filter: blur(15px);
-    transition: background .5s linear .2s;
-    background-position: center;
-    margin: -15px;
-}
-
-.search-bar {
-    display: inline-block;
-}
 #time{
     border-style: solid;
     border-top-style: solid;
     border-radius: 4px;
     padding: .3em;
+    display: inline;
+}
+
+#nav-search{
+    display: inline;
 }
 
 .clock{

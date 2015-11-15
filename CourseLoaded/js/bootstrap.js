@@ -20,6 +20,7 @@
     document.getElementById('time').innerHTML = time;
   }
 
+
   window.onload = function() {
     // Update the clock every second
     displayCurrentTime();
