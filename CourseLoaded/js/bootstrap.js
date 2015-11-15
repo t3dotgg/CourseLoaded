@@ -206,6 +206,3 @@ if(typeof fuckAdBlock === 'undefined') {
         resetOnEnd: false
 });
     }
-
-
-
